@@ -5,7 +5,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #search-container {
@@ -39,18 +39,19 @@ button {
 }
 
 button:hover {
-  background-color: #9A1828;  
+  background-color: #9a1828;
 }
 
 button:disabled {
   background-color: #777777;
+  cursor: not-allowed;
 }
 
 input[type='text'] {
   padding: 0 12px;
-  color: #4A4A4A;
+  color: #4a4a4a;
   font-size: 15px;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   outline: 0;
   flex: 1;
   min-height: 50px;
@@ -79,6 +80,17 @@ input[type='text'] {
 
 .example-prompt:hover {
   background-color: #4e4e4e22;
+}
+
+.example-prompt.disabled {
+  cursor: default;
+  color: #e7e7e7;
+  border-color: #d8d8d8;
+  background-color: #fff;
+}
+
+textarea {
+  margin-top: 20px;
 }
 
 @keyframes fadeIn {
