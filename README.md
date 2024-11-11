@@ -36,6 +36,11 @@ python chatSearchServer.py
 pip freeze > requirements.txt
 ```
 
+```
+#to run via docker containers
+docker-compose up
+```
+
 ### Note to self for expo
 
 - Run front end locally
