@@ -1,0 +1,28 @@
+{
+  "acres": {
+  "type": "array",
+  "items": {
+  "type": "integer"
+  },
+  "minItems": 2,
+  "maxItems": 2,
+  "default": [null, null]
+  },
+  "beds": {
+  "type": "string",
+  "enum": ["1e", "1g", "2e", "2g", "3e", "3g"],
+  "default": null,
+  "description": "Number of bedrooms, where 'e' means exact and 'g' means greater"
+  },
+  "baths": {
+  "type": "string",
+  "enum": ["1e", "1g", "2e", "2g", "3e", "3g"],
+  "default": null,
+  "description": "Number of bathrooms, where 'e' means exact and 'g' means greater"
+  },
+  "city": {
+  "type": "string",
+  "nullable": true,
+  "default": null
+  }
+}

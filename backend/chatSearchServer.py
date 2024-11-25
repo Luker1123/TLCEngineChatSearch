@@ -51,7 +51,7 @@ def convertResponseToJson(response):
 
 @app.route("/search")
 def search():
-    json_template = getTemplateString("outputTemplate.json")
+    json_template = getTemplateString("Template_simple.json")
     user_prompt = request.args.get("prompt")
     print(f"User prompt: {user_prompt}")
     
