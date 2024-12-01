@@ -51,12 +51,18 @@ def convertResponseToJson(response):
 
 @app.route("/search")
 def search():
-    json_template = getTemplateString("Template_simple.json")
+    json_template = getTemplateString("simpleTemplate.json")
     user_prompt = request.args.get("prompt")
     print(f"User prompt: {user_prompt}")
     
     # Sometimes this propmpt causes it to randomly errors so need to find a more robust way
-    prompt=f"You are a model that should take in user input and process it into a json with fields to be specified. Take the following user input and convert it into a json file in the format \"{json_template}\" this has all possible values for the search field. Here is the user input to convert. \"{user_prompt}\" put it in the format specified earlier. only respond with the full json text of the fields with only the necessary values filled out."
+    prompt = (
+    "Create a JSON using the instructions: \"{json_template}\". "
+    "Take the user input: \"{user_prompt}\", and process it using the 'fieldInstructions' and rules in the 'context'. "
+    "Ensure every field in the output adheres to its corresponding constraints and matches the structure of the 'exampleOutput'. "
+    "The only information you should respond with is a JSON object, with no additional text, explanations, or formatting."
+    ).format(json_template=json_template, user_prompt=user_prompt)
+
     response = sendMessage(prompt)
     # Need to handle response for errors
     print(response)

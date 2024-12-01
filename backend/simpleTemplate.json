@@ -1,0 +1,40 @@
+{
+  "context": {
+      "instructions": "Using 'fieldInstructions', construct a JSON object based on 'exampleOutput'. Each field must adhere to its constraints (e.g., allowed values, type). Return only the JSON object in the same structure as 'exampleOutput'.",
+      "exampleOutput": {
+          "garages": "DETERMINE VALUE USING FIELD INSTRUCTIONS AND USER INPUT, NOTE: YOU SHOULD NEVER INCLUDE THIS TEXT IN THE OUTPUT",
+          "beds": "DETERMINE VALUE USING FIELD INSTRUCTIONS AND USER INPUT, NOTE: YOU SHOULD NEVER INCLUDE THIS TEXT IN THE OUTPUT",
+          "baths": "DETERMINE VALUE USING FIELD INSTRUCTIONS AND USER INPUT, NOTE: YOU SHOULD NEVER INCLUDE THIS TEXT IN THE OUTPUT",
+          "city":  "DETERMINE VALUE USING FIELD INSTRUCTIONS AND USER INPUT, NOTE: YOU SHOULD NEVER INCLUDE THIS TEXT IN THE OUTPUT"
+      }
+  },
+  "fieldInstructions": {
+      "garages": {
+          "valueConstraint": "constrained",
+          "allowedValues": [null, "1g", "2g", "3g"],
+          "defaultValue": null,
+          "valueType": "string",
+          "description": "Number of cars that can fit in a garage."
+      },
+      "beds": {
+          "valueConstraint": "constrained",
+          "allowedValues": [null, "1e", "1g", "2e", "2g", "3e", "3g"],
+          "defaultValue": null,
+          "valueType": "string",
+          "description": "Number of bedrooms. 'e' means exact, 'g' means greater. 2g would represent that the client wants at least two beds, and 2e would represent exactly two beds"
+      },
+      "baths": {
+          "valueConstraint": "constrained",
+          "allowedValues": [null, "1e", "1g", "2e", "2g", "3e", "3g"],
+          "defaultValue": null,
+          "valueType": "string",
+          "description": "Number of bathrooms. 'e' means exact, 'g' means greater. 2g would represent that the client wants at least two baths, and 2e would represent exactly two baths"
+      },
+      "city": {
+          "valueConstraint": "unconstrained",
+          "defaultValue": null,
+          "valueType": "string",
+          "description": "The city where the house is located."
+      }
+  }
+}
