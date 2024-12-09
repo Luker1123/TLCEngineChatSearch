@@ -76,14 +76,16 @@ def search():
     try:
         json_text = convertResponseToJson(response)
     except: 
-        return "Error Proccess JSON" # Keeping for testing purposes, should probably do something else
+        return "Error Proccessing JSON" # Keeping for testing purposes, should probably do something else
     missingFields = getMissingFields(json_text)
     print(missingFields)
     # Step 1: While there are too many missing values in the json_text, the chatbot will ask specific questions and update the json_text accordingly
     while(missingFields):
         print("Do something")
     # Step 2: Once there are no more missing values we will send postman queries utilizing this json_text to retrieve real housing entries
-        # Use GenerateURL.py, the file probably does not work in the current stage
+        # Use GenerateURL.py, the file probably does not work in the current stage so will need some work here
+        # For the sake of prototype this semester, we could just redirect to this page and ignore the remaining steps 
+        # I think the remaining steps would probably be a good idea to work on next semester.
     # Step 3: Have the chatbot show the houses in a readable format
     # Step 4: The chatbot will ask the client what they like and don't like about the houses and update the json_text accordingly 
     # Step 5: Loop back to Step 2
