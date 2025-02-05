@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
+from openai import OpenAI
 import json
 import requests
 import os
@@ -14,6 +15,22 @@ load_dotenv()
 envApiKey = os.getenv("API_KEY")
 envModel = os.getenv("MODEL")
 envPort = os.getenv("PORT")
+
+client = OpenAI()
+
+#INITIALIZE THE MODEL AND DEFINE HOW IT SHOULD WORK
+model = client.chat.completions.create({
+    model: "gpt-4o-mini", 
+    messages: [{
+        "role": "developer", 
+        "content": [{
+                "type": "text",
+                "text": instructions_text
+        }],
+        "store": True
+    }]
+})
+
 
 def sendMessage(message):
     # Define the URL and headers
@@ -30,7 +47,12 @@ def sendMessage(message):
             "role": "user",
             "content": message
             }
-        ]
+        ],
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": format_json,
+            "store": True
+        }
     }
     response = requests.post(url=url, headers=headers, json=data)
     if response.status_code == 200:
