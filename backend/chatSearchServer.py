@@ -16,9 +16,8 @@ envModel = os.getenv("MODEL")
 envPort = os.getenv("PORT")
 
 def sendMessage(message):
-    # Define the URL and headers
-    model = envModel
-    url = "http://ollama.tlcengine.com:8080/api/chat/completions"
+    model = envModel  # e.g., "gpt-4" or "gpt-3.5-turbo"
+    url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {envApiKey}",
         "Content-Type": "application/json"
@@ -27,16 +26,21 @@ def sendMessage(message):
         "model": model,
         "messages": [
             {
-            "role": "user",
-            "content": message
+                "role": "system",
+                "content": "You are a helpful assistant that only returns structured JSON objects."
+            },
+            {
+                "role": "user",
+                "content": message
             }
-        ]
+        ],
+        "temperature": 0.2  # Optional, controls creativity
     }
     response = requests.post(url=url, headers=headers, json=data)
     if response.status_code == 200:
-        return("Response:", response.json())
+        return ("Response:", response.json())
     else:
-        return("Error:", response.status_code, response.text)
+        return ("Error:", response.status_code, response.text)
 
 def getTemplateString(template):
     with open(template, "r") as file:
@@ -80,8 +84,6 @@ def search():
     missingFields = getMissingFields(json_text)
     print(missingFields)
     # Step 1: While there are too many missing values in the json_text, the chatbot will ask specific questions and update the json_text accordingly
-    while(missingFields):
-        print("Do something")
     # Step 2: Once there are no more missing values we will send postman queries utilizing this json_text to retrieve real housing entries
         # Use GenerateURL.py, the file probably does not work in the current stage so will need some work here
         # For the sake of prototype this semester, we could just redirect to this page and ignore the remaining steps 

@@ -6,12 +6,9 @@ import './App.css';
 
 
 const examplePrompts = [
-  'Vacation homes with beachfront property',
-  'Ranch homes in Millburn, NJ',
-  'Homes in walkable cities under $500,000',
-  'Old homes with hardwood floors',
+  'Vacation homes with beachfront property for a couple with room for 2 cars',
+  'Old homes with no garage, 1 bedroom 1 bath in New York City',
   'Houses with large backyards around $600,000',
-  'Modern homes with lots of large windows',
 ];
 
 function App() {
@@ -36,7 +33,7 @@ function App() {
   const search = async (text, e) => {
     if (e) e.preventDefault();
     setSearching(true);
-    const url = `http://localhost:5000/search?prompt=${encodeURIComponent(
+    const url = `http://localhost:5001/search?prompt=${encodeURIComponent(
       text
     )}`;
     //setFadingOut(true);
