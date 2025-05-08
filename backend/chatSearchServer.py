@@ -61,6 +61,35 @@ def getMissingFields(json):
             acc.append(x)
     return acc
 
+import urllib.parse
+
+def build_simple_url(data):
+    base_url = "https://krishnam.tlcengine.com/search/"
+    params = {
+        "orderby": "newest",
+        "orderbydirection": "DESC",
+        "page_number": "1",
+        "searchmap": "true",
+        "skip": "0",
+        "view": "maplist",
+        "propertytype": "sf,cnd,mf"  # This is hardcoded as in your example
+    }
+
+    # Handle inputs from the dictionary
+    if "baths" in data and data["baths"] != "Missing":
+        params["baths"] = data["baths"]
+    if "beds" in data and data["beds"] != "Missing":
+        params["beds"] = data["beds"]
+    if "city" in data and data["city"] != "Missing":
+        params["city"] = data["city"]
+    if "garages" in data and data["garages"] != "Missing":
+        params["garages"] = data["garages"]
+
+    # Encode the URL parameters
+    query_string = urllib.parse.urlencode(params, quote_via=urllib.parse.quote)
+    return f"{base_url}?{query_string}"
+
+
 @app.route("/search")
 def search():
     user_prompt = request.args.get("prompt")
@@ -91,7 +120,9 @@ def search():
     # Step 3: Have the chatbot show the houses in a readable format
     # Step 4: The chatbot will ask the client what they like and don't like about the houses and update the json_text accordingly 
     # Step 5: Loop back to Step 2
-    return json_text
+    print(json_text)
+    print(build_simple_url(json_text))
+    return build_simple_url(json_text)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=envPort)
