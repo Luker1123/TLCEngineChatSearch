@@ -10,13 +10,13 @@
   width: 80%;
 }
 :root {
-  --bg-dark: #1e1e2f;
-  --text-light: #e0e0e0;
-  --ai-bubble: #2c2c3c;
-  --user-bubble: #4f46e5;
-  --primary-accent: #8b5cf6;
+  --bg-dark: #ffffff;
+  --text-light: #000000;
+  --ai-bubble: #d3d3e3;
+  --user-bubble: #f2390b;
+  --primary-accent: #d41e1e;
   --prompt-hover: rgba(139, 92, 246, 0.1);
-  --border-color: #3a3a4a;
+  --border-color: #d3d3e3;
 }
 
 /* General Layout */
@@ -125,7 +125,7 @@ body {
   padding: 1rem;
   display: flex;
   gap: 10px;
-  background-color: #262636;
+  background-color: #d3d3e3;
 }
 
 /* Search Container 
@@ -184,7 +184,7 @@ button,
 
 button:hover,
 #search-bar button:hover {
-  background-color: #7c3aed;
+  background-color: #d41e1e;
 }
 
 button:disabled {
@@ -224,7 +224,7 @@ textarea::-webkit-scrollbar-track {
   border-radius: 5px;
 }
 textarea::-webkit-scrollbar-thumb {
-  background-color: #442d7b;
+  background-color: #f2390b;
   border-radius: 5px;
   border: 2px solid #1e1e2f; /* spacing around thumb */
 }
@@ -232,7 +232,7 @@ textarea::-webkit-scrollbar-thumb {
 /* Firefox */
 textarea {
   scrollbar-width: thin;
-  scrollbar-color: #442d7b #1e1e2f;
+  scrollbar-color: #f2390b #1e1e2f;
 }
 
 /* Typing Indicator */
