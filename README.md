@@ -1,5 +1,5 @@
 # TLCEngineChatSearch
-
+These commands work for Mac, if you have windows it is stil possible, just different commands
 ```bash
 # run frontend
 cd frontend
@@ -19,7 +19,7 @@ npm run build
 # run backend
 cd backend
 
-# create .env file if doesn't already exist using .env.example
+# create .env file if doesn't already exist using .env.example. Fill in the API_KEY accordingly. 
 cp .env.example .env
 
 # create .venv if it doesn't already exist
@@ -37,12 +37,5 @@ pip freeze > requirements.txt
 ```
 
 ```
-#to run via docker containers
-docker-compose up
+
 ```
-
-### Note to self for expo
-
-- Run front end locally
-- Run chatSearchServer.py on Mac Studio
-- Run `ssh -L 5000:localhost:5000 tlcengine@dev.tlcengine.com` on my machine to forward Mac Studio localhost:5000 to my localhost:5000
